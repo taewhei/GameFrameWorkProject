@@ -3,7 +3,7 @@ BreakBrick* g_game;
 int main(int argc, char* argv[])
 {
 	g_game = new BreakBrick();
-	g_game->init("BreakBrick", 100, 100, 640, 480, false);
+	g_game->init("BreakBrick", 100, 100, 480, 480, false);
 
 	while (g_game->running())
 	{

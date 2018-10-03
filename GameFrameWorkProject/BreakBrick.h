@@ -1,5 +1,5 @@
 #pragma once
-#include "SDL.h"
+#include "Define.h"
 
 class BreakBrick
 {
@@ -11,9 +11,28 @@ public:
 	void update();
 	void handleEvents();
 	void clean();
+	void map();
+	void Ball();
 	bool running() { return m_bRunning; }
+
+	
 private:
+	bool m_bRunning = true;	
+	void object();
+
+	Vector ballVector;
+	
+	Vector ballPos = { 240,420 };
+	Vector prePos;
+
 	SDL_Window * m_pWindow=0;
 	SDL_Renderer* m_pRenderer=0;
-	bool m_bRunning = true;
+	SDL_Surface* pTempSurface;
+	SDL_Texture* m_pTexture;
+	SDL_Rect m_sourceRectangle;
+	SDL_Rect m_destinationRectangle;
+
+	Uint64 NOW = SDL_GetPerformanceCounter();
+	Uint64 LAST = 0;
+	double deltaTime = 0;
 };
