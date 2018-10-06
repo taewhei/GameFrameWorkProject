@@ -9,28 +9,69 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Ball">
+      <UniqueIdentifier>{070ba98f-99eb-41e7-ae61-18940ac048a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BreakBrick">
+      <UniqueIdentifier>{725c943b-636f-48c9-ad42-dfa29ebd58e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{d97fb8e4-77c1-4ce5-903b-5a33fba11bee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{a8ed0d6b-328a-46a5-8b62-897b15159bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{afac6a22-bd6a-4d13-9b9f-afef8be0b855}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BrekBrick.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="BrekBrick.cpp">
+      <Filter>BreakBrick</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BreakBrick.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Define.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakBrick.h">
+      <Filter>BreakBrick</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BallMoving.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Deltatime.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

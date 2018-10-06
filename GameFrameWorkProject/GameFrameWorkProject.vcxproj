@@ -118,12 +118,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BrekBrick.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="BallMoving.h" />
     <ClInclude Include="BreakBrick.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="Deltatime.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
