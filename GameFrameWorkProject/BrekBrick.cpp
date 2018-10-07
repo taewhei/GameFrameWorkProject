@@ -34,8 +34,8 @@ bool BreakBrick::init(const char* title, int xpos, int ypos, int width, int heig
 void BreakBrick::update()
 {
 	deltatime->DoDeltaTime();
-	myball->BallCollision(player->ReturnPlayer(),mymap);
 	myball->ReturnBallMoving();
+	myball->BallCollision(player->ReturnPlayer(),mymap);
 	myball->BallMoving(*deltatime);
 
 }
