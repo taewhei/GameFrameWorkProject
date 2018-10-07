@@ -2,13 +2,16 @@
 #include "Ball.h"
 #include "Map.h"
 #include "Player.h"
+
 bool BreakBrick::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
+		
 		if (fullscreen == true)
 		{
 			m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_FULLSCREEN);
+			
 		}
 		else
 		{
@@ -19,6 +22,8 @@ bool BreakBrick::init(const char* title, int xpos, int ypos, int width, int heig
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 		}
+		pTempSurface = IMG_Load("Asset/Ball.png");
+		SDL_SetWindowIcon(m_pWindow,pTempSurface);
 	}
 	else {
 		return 1;
@@ -26,9 +31,9 @@ bool BreakBrick::init(const char* title, int xpos, int ypos, int width, int heig
 
 	deltatime = new Deltatime();	
 	mymap = new Map(m_pRenderer);
-	myball=new Ball(m_pRenderer, pTempSurface, m_pTexture);
 	player = new Player(m_pRenderer);
-	
+	myball=new Ball(m_pRenderer, pTempSurface, m_pTexture,player);
+	SDL_FreeSurface(pTempSurface);
 	return 0;
 }
 void BreakBrick::update()

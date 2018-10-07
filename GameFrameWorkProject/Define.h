@@ -1,10 +1,19 @@
 #pragma once
-#include<iostream>
+
+#define MAXBRICK 6
+
 #include<SDL.h>
-#include<string>
 #include<SDL_image.h>
+#include<string>
+#include<iostream>
 #include"Vector.h"
+#include"Collision.h"
 #include"BreakBrick.h"
 #include"Deltatime.h"
-#define MAXBRICK 6
+
+
+
+
+
+
 using namespace std;

@@ -1,4 +1,5 @@
 #pragma once
+//그냥 필요할 것 같아서 만듬
 #include "Define.h"
 struct BallMoving
 {

@@ -1,16 +1,19 @@
 #include "Ball.h"
-#include "BreakBrick.h"
-#include "Map.h"
-Ball::Ball(SDL_Renderer* m_InRenderer,SDL_Surface* InTempSurface,SDL_Texture* m_InTexture )
+
+
+Ball::Ball(SDL_Renderer* m_InRenderer,SDL_Surface* InTempSurface,SDL_Texture* m_InTexture,Player* Inplayer )
 {
 	//BreakBrick의 값을 받아오기
 	pTempSurface = InTempSurface;
 	m_pRenderer = m_InRenderer;
 	m_pTexture = m_InTexture;
 
-	pTempSurface = IMG_Load("Asset/Ball.png");
+
+	ballPos.VectorX = Inplayer->ReturnPlayer().x+Inplayer->ReturnPlayer().w/2-m_destinationRectangle.w/2;
+	ballPos.VectorY = Inplayer->ReturnPlayer().y-m_destinationRectangle.h;
+
+	
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	SDL_FreeSurface(pTempSurface);
 	ReturnBallMoving();
 }
  void Ball::DrawBall()
@@ -74,27 +77,41 @@ void Ball::BallCollision(SDL_Rect player,Map* mymap)
 		 ReturnBallMoving();
 	 }
 	
-	 else if (Collision::recCollision(player, m_destinationRectangle))
-	 {
-			 ballPos.VectorY = player.y - m_destinationRectangle.h;
+	 else if (Collision::recCollision(player, m_destinationRectangle))// player
+	 {	 
+		 ballPos.VectorY = player.y - m_destinationRectangle.h;
+		 if (m_destinationRectangle.x<=player.x + player.w / 6)
+		 {
+			 ballVector.VectorX = -Speed;
+			 ballVector.VectorY = -Speed;
+		 }
+		 else if ((player.x + player.w / 6 * 5<= m_destinationRectangle.x) && (m_destinationRectangle.x <= player.x + player.w))
+		 {
+			 ballVector.VectorX = Speed;
+			 ballVector.VectorY = -Speed;
+		 }
+		 else
+		 {
 			 ballVector.VectorY *= -1;
-	
+		 }
 	 }
 	
-	 for (int i = 0; i <= mymap->ReturnBrickCount(); i++)
+	 for (int i = 0; i <= mymap->ReturnBrickCount(); i++)//brick
 	 {
 		 ReturnBallMoving();
 		 //충돌시
 		 if (Collision::recCollision(mymap->ReturnBrickRect()[i], m_destinationRectangle))
 		 {
 			 ballPos = prePos;
-			 //대각선
+			
 			 if (((prePos.VectorY + m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y && (ballState == "LEFT_UP" || ballState == "RIGHT_UP"))
 				 || (prePos.VectorY >= mymap->ReturnBrickRect()[i].y + mymap->ReturnBrickRect()[i].h && (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")))
 				 || ((prePos.VectorX + m_destinationRectangle.w <= mymap->ReturnBrickRect()[i].x && (ballState == "LEFT_UP" || ballState == "LEFT_DOWN"))
-					 || (prePos.VectorX >= mymap->ReturnBrickRect()[i].x + mymap->ReturnBrickRect()[i].w && (ballState == "RIGHT_UP" || ballState == "RIGHT_DOWN"))))
+					 || (prePos.VectorX >= mymap->ReturnBrickRect()[i].x + mymap->ReturnBrickRect()[i].w && (ballState == "RIGHT_UP" || ballState == "RIGHT_DOWN"))))//2개충돌 방지
 			 {
-			 }
+
+			 } 
+			 //대각선
 			 else if ((prePos.VectorY+m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y || prePos.VectorY >= mymap->ReturnBrickRect()[i].y + mymap->ReturnBrickRect()[i].h)
 				 && (prePos.VectorX+m_destinationRectangle.w <= mymap->ReturnBrickRect()[i].x || prePos.VectorX >= mymap->ReturnBrickRect()[i].x + mymap->ReturnBrickRect()[i].w))
 			 {
