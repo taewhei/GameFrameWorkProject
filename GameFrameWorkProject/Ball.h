@@ -6,7 +6,7 @@
 class Ball 
 {
 private:
-	float Speed=0.2f;
+	float Speed=0.15f;
 	int nowState;
 
 	Vector ballVector;
