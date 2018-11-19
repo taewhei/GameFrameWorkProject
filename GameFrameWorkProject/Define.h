@@ -1,14 +1,12 @@
 #pragma once
 
-#define MAXBRICK 6
+#define MAXBRICK 8
 
 #include<SDL.h>
 #include<SDL_image.h>
 #include<string>
 #include<iostream>
-#include"Vector.h"
 #include"Collision.h"
-#include"BreakBrick.h"
 #include"Deltatime.h"
 
 

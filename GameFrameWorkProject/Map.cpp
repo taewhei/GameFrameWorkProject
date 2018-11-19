@@ -3,12 +3,11 @@ Map::Map(SDL_Renderer* m_InRenderer)
 {
 	m_pRenderer = m_InRenderer;
 }
-void Map::DrawMap()
+void Map::UpdateMap()
 {
 	int nWidth = 16;
 	int nHeight = 15;
 	brickCount = 0;
-
 
 	for (int y = 0; y < nHeight; y++)
 	{
@@ -21,16 +20,12 @@ void Map::DrawMap()
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 				SDL_RenderFillRect(m_pRenderer, &rect);
 				break;
-			case '*':
-				SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
-				SDL_RenderFillRect(m_pRenderer, &rect);
-				break;
+			//case '*':
+			//	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+			//	SDL_RenderFillRect(m_pRenderer, &rect);
+			//	break;
 			case '1':
 				brickRect[brickCount] = rect;
-				SDL_SetRenderDrawColor(m_pRenderer, 0, 255, 0, 255);
-				SDL_RenderFillRect(m_pRenderer, &rect);
-				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
-				SDL_RenderDrawRect(m_pRenderer, &rect);
 				brickCount++;
 
 				break;

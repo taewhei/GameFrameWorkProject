@@ -1,9 +1,12 @@
 #include "Collision.h"
+Collision* Collision::s_pInstance = 0;
 
-bool Collision::recCollision(SDL_Rect rect1, SDL_Rect rect2)
+bool Collision::RecColl(GameObject* object1, GameObject* object2)
 {
-	if (rect1.x + rect1.w >= rect2.x && rect1.x <= rect2.x + rect2.w && rect1.y
-		+ rect1.h >= rect2.y && rect1.y <= rect2.y + rect2.h)
+	if (((SDLGameObject*)object1)->m_position.getX() + ((SDLGameObject*)object1)->m_width >= ((SDLGameObject*)object2)->m_position.getX() && ((SDLGameObject*)object1)->m_position.getX()
+		<= ((SDLGameObject*)object2)->m_position.getX() + ((SDLGameObject*)object2)->m_width && ((SDLGameObject*)object1)->m_position.getY()
+		+ ((SDLGameObject*)object1)->m_height >= ((SDLGameObject*)object2)->m_position.getY() && ((SDLGameObject*)object1)->m_position.getY()
+		<= ((SDLGameObject*)object2)->m_position.getY() + ((SDLGameObject*)object2)->m_height)
 	{
 		return true;
 	}

@@ -1,5 +1,6 @@
 #pragma once
 #include"Define.h"
+
 class Map
 {
 private:
@@ -11,7 +12,7 @@ private:
 	{"#**************#"},
 	{"#**111*********#"},
 	{"#**************#"},
-	{"#*********111**#"},
+	{"#*********11111#"},
 	{"#**************#"},
 	{"#**************#"},
 	{"#**************#"},
@@ -22,11 +23,11 @@ private:
 	{"#**************#"}
 	};
 	SDL_Rect brickRect[MAXBRICK];
-	SDL_Renderer* m_pRenderer;
+	SDL_Renderer* m_pRenderer = 0;
 public:
 	Map(SDL_Renderer* m_InRenderer);
 	~Map();
-	void DrawMap();
+	void UpdateMap();
 	int ReturnBrickCount() { return brickCount; }
 	void ReplaceBrick(int i);
 	SDL_Rect* ReturnBrickRect(){ return brickRect; }

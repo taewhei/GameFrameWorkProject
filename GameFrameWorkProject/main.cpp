@@ -1,18 +1,41 @@
-#include"BreakBrick.h"
+#include"Game.h"
+#include <SDL.h>
+#include<iostream>
 #include<time.h>
-BreakBrick* g_game;
+Game* g_game;
+
 int main(int argc, char* argv[])
 {
-	srand(time(NULL));
-	g_game = new BreakBrick();
-	g_game->init("BreakBrick", 100, 100, 480, 480, false);
+	const int FPS = 60;
+	const int DELAY_TIME = 1000.0f / FPS;
 
-	while (g_game->running())
+	Uint32 frameStart, frameTime;
+	std::cout << "game init attempt...\n";
+	if (TheGame::Instance()->init("BreakBrick", 100, 100, 480, 480, false))
 	{
-		g_game->handleEvents();
-		g_game->update();
-		g_game->render();
+		std::cout << "game init success!\n";
 	}
-	g_game->clean();
+	else {
+		std::cout << "game init failure - " << SDL_GetError() << "\n";
+		return -1;
+	}
+
+	while (TheGame::Instance()->running())
+	{
+		frameStart = SDL_GetTicks();
+		TheGame::Instance()->handleEvents();
+		TheGame::Instance()->update();
+		TheGame::Instance()->collision();
+		TheGame::Instance()->render();
+		
+		frameTime = SDL_GetTicks() - frameStart;
+
+		if (frameTime < DELAY_TIME)
+		{
+			SDL_Delay((int)(DELAY_TIME - frameTime));
+		}
+	}
+	std::cout << "game closing...\n";
+	TheGame::Instance()->clean();
 	return 0;
 }

@@ -1,7 +1,8 @@
 #pragma once
 #include"Define.h"
+#include"SDLGameObject.h"
 
-class Player
+class Player:public SDLGameObject
 {
 private:
 	SDL_Renderer* m_pRenderer;
@@ -9,10 +10,13 @@ private:
 	SDL_Rect Lcontroll;
 	SDL_Rect Rcontroll;
 	float move = 0;
+	void handleInput();
 public:
-	Player(SDL_Renderer* m_InRenderer);
-	~Player();
-	void DrawPlayer();
+	Player(const LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
+	virtual void collision(GameObject* obj);
 	SDL_Rect ReturnPlayer() { return player; }
 	void PlayerMove(SDL_Event event);
 };

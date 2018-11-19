@@ -12,9 +12,6 @@
     <Filter Include="Ball">
       <UniqueIdentifier>{070ba98f-99eb-41e7-ae61-18940ac048a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BreakBrick">
-      <UniqueIdentifier>{725c943b-636f-48c9-ad42-dfa29ebd58e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Map">
       <UniqueIdentifier>{a8ed0d6b-328a-46a5-8b62-897b15159bca}</UniqueIdentifier>
     </Filter>
@@ -24,6 +21,21 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{ba03e00b-b15a-405c-8cc2-9bbf664d82d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TextureManager">
+      <UniqueIdentifier>{01172a49-2c19-41d1-84af-227e598525a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDLGameObject">
+      <UniqueIdentifier>{b8f6f0a8-3a54-412e-89ca-4e4705a3bf67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputHandler">
+      <UniqueIdentifier>{7980c35c-6222-439a-8e14-00d126423179}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{725c943b-636f-48c9-ad42-dfa29ebd58e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Brick">
+      <UniqueIdentifier>{bbe00d42-d2e8-4df9-ae30-4e904a1ff8bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,9 +43,6 @@
     </ClCompile>
     <ClCompile Include="Ball.cpp">
       <Filter>Ball</Filter>
-    </ClCompile>
-    <ClCompile Include="BrekBrick.cpp">
-      <Filter>BreakBrick</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Player</Filter>
@@ -44,19 +53,28 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLGameObject.cpp">
+      <Filter>SDLGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>InputHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Brick</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>Ball</Filter>
-    </ClInclude>
-    <ClInclude Include="BreakBrick.h">
-      <Filter>BreakBrick</Filter>
     </ClInclude>
     <ClInclude Include="BallMoving.h">
       <Filter>헤더 파일</Filter>
@@ -72,6 +90,30 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLGameObject.h">
+      <Filter>SDLGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>InputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderParams.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Brick</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
