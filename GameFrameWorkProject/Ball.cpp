@@ -93,7 +93,7 @@ void Ball::collision(GameObject* obj)
 	}
 	else if (((SDLGameObject*)obj)->m_textureID == "Player")
 	{
-		m_position = prePos;
+		m_position.setY(420);
 		m_velocity.setY(m_velocity.getY()*-1);
 	}
 }

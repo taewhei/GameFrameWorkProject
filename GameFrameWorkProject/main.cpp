@@ -19,9 +19,10 @@ int main(int argc, char* argv[])
 		std::cout << "game init failure - " << SDL_GetError() << "\n";
 		return -1;
 	}
-
+	
 	while (TheGame::Instance()->running())
 	{
+		
 		frameStart = SDL_GetTicks();
 		TheGame::Instance()->handleEvents();
 		TheGame::Instance()->update();

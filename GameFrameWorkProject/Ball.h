@@ -7,7 +7,7 @@
 class Ball :public SDLGameObject
 {
 private:
-	float Speed=2.5;
+	float Speed=4.5;
 
 	//int nowState;
 	//

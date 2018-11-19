@@ -73,9 +73,6 @@
     <ClInclude Include="Define.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>Ball</Filter>
-    </ClInclude>
     <ClInclude Include="BallMoving.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -114,6 +111,9 @@
     </ClInclude>
     <ClInclude Include="Brick.h">
       <Filter>Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Ball</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
