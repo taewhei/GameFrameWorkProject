@@ -16,7 +16,7 @@ Ball::Ball(const LoaderParams* pParams) : SDLGameObject(pParams)
 //
 //
 //	m_position.getX() = Inplayer->ReturnPlayer().x+Inplayer->ReturnPlayer().w/2-m_destinationRectangle.w/2;
-//	m_position.getY() = Inplayer->ReturnPlayer().y-m_destinationRectangle.h;
+//	m_position.getY() = Inplayer->ReturnPlayer().y-m_height;
 //
 //	
 //	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
@@ -32,26 +32,13 @@ Ball::Ball(const LoaderParams* pParams) : SDLGameObject(pParams)
  void Ball::update()
  {
 	 prePos = m_position;
-      if (m_position.getX() <= 30 || m_position.getX() >= 430)
-      {
-     	 m_position = prePos;
-     	 m_velocity.setX(m_velocity.getX()*-1);
-     	 ReturnBallMoving();
-      }
-     
-      if (m_position.getY() <= 30)
-      {
-     	 m_position = prePos;
-     	 m_velocity.setY(m_velocity.getY()*-1);
-     	 ReturnBallMoving();
-      }
-     
+	 UpdateBallMoving();
 	 SDLGameObject::update();
  }
  void Ball::clean()
  {
  }
-void Ball::ReturnBallMoving() {
+void Ball::UpdateBallMoving() {
 	 if (m_velocity.getX() == 0 && m_velocity.getY()== -Speed)
 	 {
 		 ballState = "UP";
@@ -85,11 +72,57 @@ void Ball::ReturnBallMoving() {
 }
 void Ball::collision(GameObject* obj)
 {
+	if (m_position.getX() <= 30 || m_position.getX() >= 430)
+	{
+		m_position = prePos;
+		m_velocity.setX(m_velocity.getX()*-1);
+	}
 
-	if (((SDLGameObject*)obj)->m_textureID == "Brick")
+	if (m_position.getY() <= 30)
 	{
 		m_position = prePos;
 		m_velocity.setY(m_velocity.getY()*-1);
+	}
+	if (((SDLGameObject*)obj)->m_textureID == "Brick")
+	{
+		m_position = prePos;
+
+		if (((prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY() && (ballState == "LEFT_UP" || ballState == "RIGHT_UP"))
+			|| (prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height && (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")))
+			|| ((prePos.getX() + ((SDLGameObject*)obj)->m_position.getX() && (ballState == "LEFT_UP" || ballState == "LEFT_DOWN"))
+				|| (prePos.getX() >= ((SDLGameObject*)obj)->m_position.getX() + ((SDLGameObject*)obj)->m_width && (ballState == "RIGHT_UP" || ballState == "RIGHT_DOWN"))))//2개충돌 방지
+		{
+
+		}
+		else if ((prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY() || prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height)
+			&& (prePos.getX() + m_width <= ((SDLGameObject*)obj)->m_position.getX() || prePos.getX() >= ((SDLGameObject*)obj)->m_position.getX() + ((SDLGameObject*)obj)->m_width))
+		{
+			if (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")
+			{
+				if (prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY())
+					m_velocity.setY(m_velocity.getY()*-1);
+				else
+					m_velocity.setY(m_velocity.getX()*-1);
+			}
+			else if (ballState == "LEFT_UP" || ballState == "RIGHT_UP")
+			{
+				if (prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height)
+					m_velocity.setY(m_velocity.getY()*-1);
+				else
+					m_velocity.setY(m_velocity.getX()*-1);
+			}
+		}
+		//Y
+		else if (prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY() || prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height)
+		{
+
+			m_velocity.setY(m_velocity.getY()*-1);
+		}
+		//X
+		else if (prePos.getX() + m_width <= ((SDLGameObject*)obj)->m_position.getX() || prePos.getX() >= ((SDLGameObject*)obj)->m_position.getX() + ((SDLGameObject*)obj)->m_width)
+		{
+			m_velocity.setY(m_velocity.getX()*-1);
+		}
 	}
 	else if (((SDLGameObject*)obj)->m_textureID == "Player")
 	{
@@ -147,35 +180,35 @@ void Ball::collision(GameObject* obj)
 //		 {
 //			 m_position = prePos;
 //			
-//			 if (((prePos.getY() + m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y && (ballState == "LEFT_UP" || ballState == "RIGHT_UP"))
-//				 || (prePos.getY() >= mymap->ReturnBrickRect()[i].y + mymap->ReturnBrickRect()[i].h && (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")))
+//			 if (((prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY() && (ballState == "LEFT_UP" || ballState == "RIGHT_UP"))
+//				 || (prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height && (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")))
 //				 || ((prePos.VectorX + m_destinationRectangle.w <= mymap->ReturnBrickRect()[i].x && (ballState == "LEFT_UP" || ballState == "LEFT_DOWN"))
 //					 || (prePos.VectorX >= mymap->ReturnBrickRect()[i].x + mymap->ReturnBrickRect()[i].w && (ballState == "RIGHT_UP" || ballState == "RIGHT_DOWN"))))//2개충돌 방지
 //			 {
 //
 //			 } 
 //			 //대각선
-//			 else if ((prePos.getY()+m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y || prePos.getY() >= mymap->ReturnBrickRect()[i].y + mymap->ReturnBrickRect()[i].h)
+//			 else if ((prePos.getY()+m_height <= ((SDLGameObject*)obj)->m_position.getY() || prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height)
 //				 && (prePos.VectorX+m_destinationRectangle.w <= mymap->ReturnBrickRect()[i].x || prePos.VectorX >= mymap->ReturnBrickRect()[i].x + mymap->ReturnBrickRect()[i].w))
 //			 {
 //				 
 //				 if (ballState == "LEFT_DOWN" || ballState == "RIGHT_DOWN")
 //				 {
-//					 if (prePos.getY() + m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y)
+//					 if (prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY())
 //						 m_velocity.getY()*= -1;
 //					 else
 //						 m_velocity.getX() *= -1;
 //				 }
 //				 else if (ballState == "LEFT_UP" || ballState == "RIGHT_UP")
 //				 {
-//					 if (prePos.getY()>= mymap->ReturnBrickRect()[i].y+ mymap->ReturnBrickRect()[i].h)
+//					 if (prePos.getY()>= ((SDLGameObject*)obj)->m_position.getY()+ ((SDLGameObject*)obj)->m_height)
 //						 ballVector.getY()*= -1;
 //					 else
 //						 m_velocity.getX() *= -1;
 //				 }
 //			 }
 //			 //Y
-//			 else if (prePos.getY() + m_destinationRectangle.h <= mymap->ReturnBrickRect()[i].y || prePos.getY() >= mymap->ReturnBrickRect()[i].y + mymap->ReturnBrickRect()[i].h)
+//			 else if (prePos.getY() + m_height <= ((SDLGameObject*)obj)->m_position.getY() || prePos.getY() >= ((SDLGameObject*)obj)->m_position.getY() + ((SDLGameObject*)obj)->m_height)
 //			 {
 //				 //
 //				 m_velocity.getY()*= -1;

@@ -35,16 +35,23 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		deltatime = new Deltatime();
 		TheTextureManager::Instance()->load("Asset/Player.png", "Player", m_pRenderer);
 		TheTextureManager::Instance()->load("Asset/Brick.png", "Brick", m_pRenderer); 
+		TheTextureManager::Instance()->load("Asset/non_Brick.png", "non_Brick", m_pRenderer);
 		TheTextureManager::Instance()->load("Asset/Ball.png", "Ball", m_pRenderer);
 
 
 		m_gameObjects.push_back(new Player(new LoaderParams(180,445,120,40, "Player")));
-		mymap->UpdateMap();
+		mymap->InitMap();
 		brickRect = mymap->ReturnBrickRect();
+		non_brickRect = mymap->ReturnNon_BrickRect();
 		for (int i = 0; i < MAXBRICK; i++)
 		{
 			m_gameObjects.push_back(new Brick(new LoaderParams(brickRect[i].x, brickRect[i].y, brickRect[i].w,
 				brickRect[i].h, "Brick")));
+		}
+		for (int i = 0; i < 44; i++)
+		{
+			m_gameObjects.push_back(new Brick(new LoaderParams(non_brickRect[i].x, non_brickRect[i].y, non_brickRect[i].w,
+				non_brickRect[i].h, "non_Brick")));
 		}
 	
 		m_gameObjects.push_back(new Ball(new LoaderParams(200, 425, 20, 20, "Ball")));
@@ -58,7 +65,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 void Game::update()
 {
 	deltatime->DoDeltaTime();	
-	mymap->UpdateMap();
+
 	brickRect = mymap->ReturnBrickRect();
 	for (std::vector<GameObject*>::size_type i = 0;
 		i != m_gameObjects.size(); i++)
@@ -80,7 +87,7 @@ void Game::render()
 	{
 		m_gameObjects[i]->draw();
 	}
-	mymap->UpdateMap();
+	mymap->InitMap();
 	SDL_RenderPresent(m_pRenderer); // draw to the screen
 
 //SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);

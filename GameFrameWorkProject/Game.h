@@ -41,4 +41,5 @@ private:
 	Map* mymap;
 	Player* player;
 	SDL_Rect* brickRect;
+	SDL_Rect* non_brickRect;
 }; typedef Game TheGame;

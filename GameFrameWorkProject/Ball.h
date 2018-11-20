@@ -29,7 +29,7 @@ public:
 	virtual void clean();
 	virtual void collision(GameObject* obj);
 	void BallCollision(Player* player,Map* map);
-	void ReturnBallMoving();
+	void UpdateBallMoving();
 	void BallMoving(Deltatime deltatime);
 	
 
