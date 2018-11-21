@@ -30,7 +30,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 		pTempSurface = IMG_Load("Asset/Brick.png");
 		SDL_SetWindowIcon(m_pWindow,pTempSurface);
-		mymap = new Map(m_pRenderer);
 		m_bRunning = true;
 		deltatime = new Deltatime();
 		TheTextureManager::Instance()->load("Asset/Player.png", "Player", m_pRenderer);
@@ -39,10 +38,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		TheTextureManager::Instance()->load("Asset/Ball.png", "Ball", m_pRenderer);
 
 
-		m_gameObjects.push_back(new Player(new LoaderParams(180,445,120,40, "Player")));
-		mymap->InitMap();
-		brickRect = mymap->ReturnBrickRect();
-		non_brickRect = mymap->ReturnNon_BrickRect();
+		m_gameObjects.push_back(new Player(new LoaderParams(180,455,120,40, "Player")));
+		Mymap::Instance()->InitMap();
+		brickRect = Mymap::Instance()->ReturnBrickRect();
+		non_brickRect = Mymap::Instance()->ReturnNon_BrickRect();
 		for (int i = 0; i < MAXBRICK; i++)
 		{
 			m_gameObjects.push_back(new Brick(new LoaderParams(brickRect[i].x, brickRect[i].y, brickRect[i].w,
@@ -72,11 +71,7 @@ void Game::update()
 	{
 		m_gameObjects[i]->update();
 	}
-
-	//myball->ReturnBallMoving();
-	//myball->BallCollision(player->ReturnPlayer(),mymap);
-	//myball->BallMoving(*deltatime);
-
+	Mymap::Instance()->UpdateMap(m_gameObjects);
 }
 void Game::render()
 {
@@ -87,15 +82,7 @@ void Game::render()
 	{
 		m_gameObjects[i]->draw();
 	}
-	mymap->InitMap();
 	SDL_RenderPresent(m_pRenderer); // draw to the screen
-
-//SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
-//SDL_RenderClear(m_pRenderer);
-//mymap->DrawMap();
-//myball->DrawBall();
-//player->DrawPlayer();
-//SDL_RenderPresent(m_pRenderer);
 	
 }
 void Game::clean()
@@ -111,18 +98,16 @@ void Game::collision()
 	for (std::vector<GameObject*>::size_type i = 0;
 		i != m_gameObjects.size(); i++)
 	{
-		for (std::vector<GameObject*>::size_type j = i+1;
+		for (std::vector<GameObject*>::size_type j = 0;
 			j != m_gameObjects.size(); j++)
 		{
 			if (TheCollision::Instance()->RecColl(m_gameObjects[i], m_gameObjects[j])&&(((SDLGameObject*)m_gameObjects[i])->m_textureID != ((SDLGameObject*)m_gameObjects[j])->m_textureID))
-			{
-				m_gameObjects[i]->collision(m_gameObjects[j]);
+			{	
 				m_gameObjects[j]->collision(m_gameObjects[i]);
-				break;
+				m_gameObjects[i]->collision(m_gameObjects[j]);
+			
 			}
-	
 		}
-		
 	}
 }
 void Game::handleEvents()
@@ -133,7 +118,3 @@ void Game::quit()
 {
 	m_bRunning = false;
 }
-
-
-
-

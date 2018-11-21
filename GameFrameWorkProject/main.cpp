@@ -6,6 +6,8 @@ Game* g_game;
 
 int main(int argc, char* argv[])
 {
+
+	srand(time(NULL));
 	const int FPS = 60;
 	const int DELAY_TIME = 1000.0f / FPS;
 

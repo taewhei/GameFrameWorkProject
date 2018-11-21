@@ -36,6 +36,9 @@
     <Filter Include="Brick">
       <UniqueIdentifier>{bbe00d42-d2e8-4df9-ae30-4e904a1ff8bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Online">
+      <UniqueIdentifier>{abad3bfd-272d-4f0f-8a14-611e5692963f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -71,9 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="BallMoving.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Deltatime.h">

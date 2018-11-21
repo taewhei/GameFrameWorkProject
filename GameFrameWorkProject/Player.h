@@ -11,12 +11,12 @@ private:
 	SDL_Rect Rcontroll;
 	float move = 0;
 	void handleInput();
+
 public:
 	Player(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
 	virtual void collision(GameObject* obj);
-	SDL_Rect ReturnPlayer() { return player; }
-	void PlayerMove(SDL_Event event);
+	Vector2D prePos;
 };

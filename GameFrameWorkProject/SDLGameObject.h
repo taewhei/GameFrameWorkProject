@@ -11,7 +11,10 @@ public:
 	virtual void update();
 	virtual void clean();
 	virtual void collision(GameObject* obj) {};
+
 	friend class Ball;
+	friend class Brick;
+	friend class Map;
 	friend class Collision;
 	friend class Game;
 protected:

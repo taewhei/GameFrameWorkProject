@@ -1,8 +1,8 @@
 #include"Map.h"
-Map::Map(SDL_Renderer* m_InRenderer)
-{
-	m_pRenderer = m_InRenderer;
-}
+#include"SDLGameObject.h"
+Map* Map::s_pInstance = 0;
+
+
 void Map::InitMap()
 {
 	int nWidth = 16;
@@ -27,6 +27,18 @@ void Map::InitMap()
 				break;
 			}
 		}
+	}
+}
+void Map::UpdateMap(std::vector<GameObject*> m_gameObjects)
+{
+	int brickCount = 0;
+	for (std::vector<GameObject*>::size_type i = 1;
+		i < MAXBRICK; i++)
+	{
+		SDL_Rect rect = { ((SDLGameObject*)m_gameObjects[i])->m_position.getX(),((SDLGameObject*)m_gameObjects[i])->m_position.getY(),
+			((SDLGameObject*)m_gameObjects[i])->m_width,((SDLGameObject*)m_gameObjects[i])->m_height };
+		brickRect[brickCount] = rect;
+		brickCount++;
 	}
 }
 
