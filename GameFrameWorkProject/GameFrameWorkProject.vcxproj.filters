@@ -39,6 +39,15 @@
     <Filter Include="Online">
       <UniqueIdentifier>{abad3bfd-272d-4f0f-8a14-611e5692963f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MenuState">
+      <UniqueIdentifier>{e5cabc8d-dad3-43b2-a068-f8c8535922d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayState">
+      <UniqueIdentifier>{33e98750-5ea3-4381-be2b-1aa609181128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStateMachine">
+      <UniqueIdentifier>{6da34c4f-81ac-4f3f-bad1-0242ab02afc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -70,6 +79,15 @@
     </ClCompile>
     <ClCompile Include="Brick.cpp">
       <Filter>Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>MenuState</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>PlayState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>GameStateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +132,18 @@
     </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>MenuState</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>PlayState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>GameStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

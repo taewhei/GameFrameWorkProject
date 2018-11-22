@@ -2,6 +2,7 @@
 #include "Define.h"
 #include <vector>
 #include"GameObject.h"
+#include"GameStateMachine.h"
 
 class Ball;
 class Deltatime;
@@ -21,6 +22,7 @@ public:
 	void collision();
 	bool running() { return m_bRunning; }
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+	GameStateMachine* m_pGameStateMachine;
 	static Game* Instance();
 	void quit();
 private:

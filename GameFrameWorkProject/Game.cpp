@@ -6,6 +6,8 @@
 #include"TextureManager.h"
 #include"InputHandler.h"
 #include"Collision.h"
+#include"MenuState.h"
+#include"PlayState.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -32,11 +34,13 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		SDL_SetWindowIcon(m_pWindow,pTempSurface);
 		m_bRunning = true;
 		deltatime = new Deltatime();
-		TheTextureManager::Instance()->load("Asset/Player.png", "Player", m_pRenderer);
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(PlayState::Instance());
+		
+		/*TheTextureManager::Instance()->load("Asset/Player.png", "Player", m_pRenderer);
 		TheTextureManager::Instance()->load("Asset/Brick.png", "Brick", m_pRenderer); 
 		TheTextureManager::Instance()->load("Asset/non_Brick.png", "non_Brick", m_pRenderer);
 		TheTextureManager::Instance()->load("Asset/Ball.png", "Ball", m_pRenderer);
-
 
 		m_gameObjects.push_back(new Player(new LoaderParams(180,455,120,40, "Player")));
 		Mymap::Instance()->InitMap();
@@ -53,7 +57,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 				non_brickRect[i].h, "non_Brick")));
 		}
 	
-		m_gameObjects.push_back(new Ball(new LoaderParams(200, 425, 20, 20, "Ball")));
+		m_gameObjects.push_back(new Ball(new LoaderParams(200, 425, 20, 20, "Ball")));*/
 	}
 	else {
 		return false; // sdl could not initialize
@@ -65,23 +69,26 @@ void Game::update()
 {
 	deltatime->DoDeltaTime();	
 
-	brickRect = mymap->ReturnBrickRect();
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
-	Mymap::Instance()->UpdateMap(m_gameObjects);
+	//brickRect = mymap->ReturnBrickRect();
+	m_pGameStateMachine->update();
+	//for (std::vector<GameObject*>::size_type i = 0;
+	//	i != m_gameObjects.size(); i++)
+	//{
+	//	m_gameObjects[i]->update();
+	//}
+	//Mymap::Instance()->UpdateMap(m_gameObjects);
 }
 void Game::render()
 {
+	
 	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(m_pRenderer); // clear to the draw colour
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	//for (std::vector<GameObject*>::size_type i = 0;
+	//	i != m_gameObjects.size(); i++)
+	//{
+	//	m_gameObjects[i]->draw();
+	//}
+	m_pGameStateMachine->render();
 	SDL_RenderPresent(m_pRenderer); // draw to the screen
 	
 }
@@ -95,20 +102,7 @@ void Game::clean()
 }
 void Game::collision()
 {
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != m_gameObjects.size(); i++)
-	{
-		for (std::vector<GameObject*>::size_type j = 0;
-			j != m_gameObjects.size(); j++)
-		{
-			if (TheCollision::Instance()->RecColl(m_gameObjects[i], m_gameObjects[j])&&(((SDLGameObject*)m_gameObjects[i])->m_textureID != ((SDLGameObject*)m_gameObjects[j])->m_textureID))
-			{	
-				m_gameObjects[j]->collision(m_gameObjects[i]);
-				m_gameObjects[i]->collision(m_gameObjects[j]);
-			
-			}
-		}
-	}
+	m_pGameStateMachine->
 }
 void Game::handleEvents()
 {

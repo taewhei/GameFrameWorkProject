@@ -17,6 +17,7 @@ public:
 	friend class Map;
 	friend class Collision;
 	friend class Game;
+	friend class PlayState;
 protected:
 	int m_width;
 	int m_height;
