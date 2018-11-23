@@ -61,7 +61,7 @@ bool PlayState::onExit()
 	std::cout << "exiting PlayState\n";
 	return true;
 }
-bool PlayState::Collision(GameObject* obj)
+void PlayState::Collision()
 {
 	for (std::vector<GameObject*>::size_type i = 0;
 		i != m_gameObjects.size(); i++)

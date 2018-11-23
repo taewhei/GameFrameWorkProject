@@ -102,7 +102,7 @@ void Game::clean()
 }
 void Game::collision()
 {
-	m_pGameStateMachine->
+	m_pGameStateMachine->collision();
 }
 void Game::handleEvents()
 {

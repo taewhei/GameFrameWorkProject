@@ -9,7 +9,7 @@ public:
 	virtual void render();
 	virtual bool onEnter();
 	virtual bool onExit();
-	virtual bool Collision(GameObject* obj);
+	virtual void Collision();
 	virtual std::string getStateID() const { return s_playID; }
 	static PlayState* Instance()
 	{

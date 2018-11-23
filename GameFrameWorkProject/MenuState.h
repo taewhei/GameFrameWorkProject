@@ -7,6 +7,7 @@ public:
 	virtual void render();
 	virtual bool onEnter();
 	virtual bool onExit();
+	virtual void Collision();
 	virtual std::string getStateID() const { return s_menuID; }
 	static MenuState* Instance()
 	{

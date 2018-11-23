@@ -80,14 +80,14 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Brick</Filter>
     </ClCompile>
-    <ClCompile Include="MenuState.cpp">
-      <Filter>MenuState</Filter>
-    </ClCompile>
     <ClCompile Include="PlayState.cpp">
       <Filter>PlayState</Filter>
     </ClCompile>
     <ClCompile Include="GameStateMachine.cpp">
       <Filter>GameStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>MenuState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
