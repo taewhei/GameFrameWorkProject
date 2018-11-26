@@ -6,12 +6,7 @@
 class UI : public SDLGameObject
 {
 private:
-	std::string scoreUI;
-	std::string lifeUI;
-	std::string comboUI;
-	std::string timerUI;
-	std::string totalUI;
-	std::string infoUI;
+	std::string wholeUI;
 
 	std::string ComboState;
 	SDL_Color UIColor = { 255,255,255 };

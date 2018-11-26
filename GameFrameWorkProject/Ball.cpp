@@ -19,7 +19,8 @@ Ball::Ball(const LoaderParams* pParams) : SDLGameObject(pParams)
  {
 	
 	 if (TheGame::Instance()->Start==false)
-	 {
+	 {	 
+		 TheTimer::Instance()->pause();
 		 m_position.setX(setPos.getX()+55) ;
 		 m_position.setY(setPos.getY()-m_height-1);
 		 handleInput();
@@ -37,7 +38,7 @@ Ball::Ball(const LoaderParams* pParams) : SDLGameObject(pParams)
 		 m_velocity.setY(0); 
 		 Mix_PlayChannel(-1, effectsound, 0);
 		 PlayState::Instance()->combo = 0;
-		 TheTimer::Instance()->pause();
+	
 	 }
 	 SDLGameObject::update();
  }

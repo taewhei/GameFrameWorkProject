@@ -18,6 +18,13 @@ BackGround::BackGround(const LoaderParams* pParams) : SDLGameObject(pParams)
 		BackGroundMusic->volume = 50;
 		Mix_PlayChannel(-1, BackGroundMusic, -1);
 	}
+	else if (m_textureID == "EndBackGround")
+	{
+		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+		BackGroundMusic = Mix_LoadWAV("Asset/EndBackGround.wav");
+		BackGroundMusic->volume = 50;
+		Mix_PlayChannel(-1, BackGroundMusic, -1);
+	}
 
 }
 void BackGround::draw()
