@@ -118,4 +118,23 @@ void InputHandler::onKeyUp()
 {
 	m_keystates = SDL_GetKeyboardState(0);
 }
+int InputHandler::isKeyOneDown(SDL_Scancode key)
+{
+	if (m_keystates != 0) {
+		if (m_keystates[key] == 1)
+		{
+			if (push == 2)
+				push = 2;
+			else
+				push++;
+			return push;
+		}
+		else {
+			push = 0;
+			return push;
+		}
+	}
+	push = 0;
+	return push;
+}
 

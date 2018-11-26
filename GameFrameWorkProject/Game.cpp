@@ -34,8 +34,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		SDL_SetWindowIcon(m_pWindow,pTempSurface);
 		m_bRunning = true;
 		deltatime = new Deltatime();
-		m_pGameStateMachine = new GameStateMachine();
-		m_pGameStateMachine->changeState(PlayState::Instance());
+		m_pGameStateMachine::Instance()->changeState(MenuState::Instance());
 		
 		/*TheTextureManager::Instance()->load("Asset/Player.png", "Player", m_pRenderer);
 		TheTextureManager::Instance()->load("Asset/Brick.png", "Brick", m_pRenderer); 
@@ -70,7 +69,7 @@ void Game::update()
 	deltatime->DoDeltaTime();	
 
 	//brickRect = mymap->ReturnBrickRect();
-	m_pGameStateMachine->update();
+	m_pGameStateMachine::Instance()->update();
 	//for (std::vector<GameObject*>::size_type i = 0;
 	//	i != m_gameObjects.size(); i++)
 	//{
@@ -88,7 +87,7 @@ void Game::render()
 	//{
 	//	m_gameObjects[i]->draw();
 	//}
-	m_pGameStateMachine->render();
+	m_pGameStateMachine::Instance()->render();
 	SDL_RenderPresent(m_pRenderer); // draw to the screen
 	
 }
@@ -102,7 +101,7 @@ void Game::clean()
 }
 void Game::collision()
 {
-	m_pGameStateMachine->collision();
+	m_pGameStateMachine::Instance()->collision();
 }
 void Game::handleEvents()
 {

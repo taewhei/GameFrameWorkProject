@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAXBRICK 12
+#define MAXBRICK 14
 
 #include<SDL.h>
 #include<SDL_image.h>

@@ -28,7 +28,7 @@ public:
 
 	bool getMouseButtonState(int buttonNumber);
 	Vector2D* getMousePosition();
-
+	int isKeyOneDown(SDL_Scancode key);
 private:
 	const Uint8* m_keystates;
 	static InputHandler* s_pInstance;
@@ -42,5 +42,6 @@ private:
 	void onMouseButtonUp(SDL_Event event);
 	void onKeyDown();
 	void onKeyUp();
+	int push;
 };
 typedef InputHandler TheInputHandler;

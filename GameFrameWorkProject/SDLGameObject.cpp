@@ -1,6 +1,7 @@
 #include "SDLGameObject.h"
 #include "TextureManager.h"
 #include "Game.h"
+#include"UIManager.h"
 
 
 SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
@@ -21,6 +22,9 @@ void SDLGameObject::draw()
 	TextureManager::Instance()->draw(m_textureID,
 		(int)m_position.getX(), (int)m_position.getY(),
 		m_width, m_height,Game::Instance()->getRenderer());
+	UIManager::Instance()->draw(m_textureID,
+		(int)m_position.getX(), (int)m_position.getY(),
+		m_width, m_height, Game::Instance()->getRenderer());
 }
 
 void SDLGameObject::update()

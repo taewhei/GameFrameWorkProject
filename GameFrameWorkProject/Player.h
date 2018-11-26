@@ -1,7 +1,7 @@
 #pragma once
 #include"Define.h"
 #include"SDLGameObject.h"
-
+#include<SDL_mixer.h>
 class Player:public SDLGameObject
 {
 private:
@@ -11,7 +11,7 @@ private:
 	SDL_Rect Rcontroll;
 	float move = 0;
 	void handleInput();
-
+	Mix_Chunk *effectsound;
 public:
 	Player(const LoaderParams* pParams);
 	virtual void draw();

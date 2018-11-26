@@ -20,9 +20,16 @@ public:
 		}
 		return s_pInstance;
 	}
+	void InputHandler();
+	int playerlife = 3;	int score = 0; int combo = 0;
+	void getscore(int get) { score += get; };
+	void getcombo() { combo += 1; };
+
 private:
+	int setSec = 30;
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
 	SDL_Rect* brickRect;
 	SDL_Rect* non_brickRect;
+	std::vector<GameObject*>::size_type playertag;
 }; typedef PlayState PlayState;

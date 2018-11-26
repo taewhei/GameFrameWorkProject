@@ -32,7 +32,7 @@ void Map::InitMap()
 void Map::UpdateMap(std::vector<GameObject*> m_gameObjects)
 {
 	int brickCount = 0;
-	for (std::vector<GameObject*>::size_type i = 1;
+	for (std::vector<GameObject*>::size_type i = 2;
 		i < MAXBRICK; i++)
 	{
 		SDL_Rect rect = { ((SDLGameObject*)m_gameObjects[i])->m_position.getX(),((SDLGameObject*)m_gameObjects[i])->m_position.getY(),

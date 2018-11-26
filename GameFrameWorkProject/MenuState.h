@@ -1,4 +1,5 @@
 #include"GameState.h"
+
 class MenuState : public GameState
 {
 public:
@@ -18,6 +19,7 @@ public:
 		}
 		return s_pInstance;
 	}
+
 private:
 	static const std::string s_menuID;
 	static MenuState* s_pInstance;

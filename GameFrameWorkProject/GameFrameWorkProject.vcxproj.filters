@@ -15,9 +15,6 @@
     <Filter Include="Map">
       <UniqueIdentifier>{a8ed0d6b-328a-46a5-8b62-897b15159bca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{afac6a22-bd6a-4d13-9b9f-afef8be0b855}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Collision">
       <UniqueIdentifier>{ba03e00b-b15a-405c-8cc2-9bbf664d82d3}</UniqueIdentifier>
     </Filter>
@@ -48,11 +45,35 @@
     <Filter Include="GameStateMachine">
       <UniqueIdentifier>{6da34c4f-81ac-4f3f-bad1-0242ab02afc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BackGround">
+      <UniqueIdentifier>{942b0156-402e-4fe3-a5e0-924deb139b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Button">
+      <UniqueIdentifier>{88c8cc51-c00a-4f9e-a554-f38a2f969812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Online\Host">
+      <UniqueIdentifier>{42d1c2b9-2a4e-4ef0-85d9-db9737f00274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Online\Join">
+      <UniqueIdentifier>{ea0e0e53-39fb-42e8-aef6-40f264806472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIManager">
+      <UniqueIdentifier>{88df9008-3263-48a8-ab7b-fc449a50de63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{ed7d3490-992d-47b3-bac4-f01b9f27e676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{2f26ddaf-335b-4c0e-a4d9-3efacce2c738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EndState">
+      <UniqueIdentifier>{6cf4fa5e-3c77-4aa6-afcf-bea81a44ce25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{afac6a22-bd6a-4d13-9b9f-afef8be0b855}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Ball.cpp">
       <Filter>Ball</Filter>
     </ClCompile>
@@ -88,6 +109,33 @@
     </ClCompile>
     <ClCompile Include="MenuState.cpp">
       <Filter>MenuState</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Button</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>Online\Host</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Online\Join</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="EndState.cpp">
+      <Filter>EndState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +192,30 @@
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Online\Host</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Online\Join</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>UIManager</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="EndState.h">
+      <Filter>EndState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

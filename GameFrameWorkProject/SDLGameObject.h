@@ -2,6 +2,7 @@
 #include"GameObject.h"
 #include "Vector2D.h"
 
+
 class SDLGameObject : public GameObject
 {
 public:
@@ -16,7 +17,6 @@ public:
 	friend class Brick;
 	friend class Map;
 	friend class Collision;
-	friend class Game;
 	friend class PlayState;
 protected:
 	int m_width;

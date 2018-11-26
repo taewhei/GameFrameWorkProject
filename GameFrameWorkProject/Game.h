@@ -22,12 +22,13 @@ public:
 	void collision();
 	bool running() { return m_bRunning; }
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
-	GameStateMachine* m_pGameStateMachine;
 	static Game* Instance();
-	void quit();
+	void quit();bool Start = false;
+
 private:
 	bool m_bRunning = true;	
 	int m_CurrentFrame;
+	
 
 	SDL_Window * m_pWindow=0;
 	SDL_Renderer* m_pRenderer=0;
